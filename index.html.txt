@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrecisionConvert | Engineering Unit Matrix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside>
+        <div class="brand">
+            <h2>UNIT MATRIX</h2>
+            <small>v2.0.4 | SECURE SYSTEM</small>
+        </div>
+
+        <div class="control-panel">
+            <div class="input-group">
+                <label>ENGINEERING CATEGORY</label>
+                <select id="unitType" onchange="updateUnits()">
+                    <option value="length">Length (Geometric)</option>
+                    <option value="mass">Mass (Statics)</option>
+                    <option value="temp">Temperature (Thermal)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>INPUT MAGNITUDE</label>
+                <input type="number" id="inputValue" placeholder="0.0000" oninput="convert()">
+                <div id="err-msg" class="error-text">Numeric input required.</div>
+            </div>
+
+            <div class="input-group">
+                <label>FROM UNIT</label>
+                <select id="fromUnit" onchange="convert()"></select>
+            </div>
+
+            <div class="input-group">
+                <label>TO UNIT</label>
+                <select id="toUnit" onchange="convert()"></select>
+            </div>
+
+            <button class="action-btn" onclick="saveConversion()">COMMIT TO LOG</button>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <div class="header-content">
+                <h1>Unit Conversion Engine</h1>
+                <p>High-Precision Calculation Terminal | Project ID: BMKT1723</p>
+            </div>
+        </header>
+
+        <section class="output-container">
+            <div class="readout-box">
+                <label>CALCULATED RESULT</label>
+                <div id="outputValue" class="mono-display">0.0000</div>
+            </div>
+        </section>
+
+        <section class="log-section">
+            <div class="section-header">
+                <h3>PERSISTENT CONVERSION HISTORY</h3>
+                <button class="text-btn" onclick="clearHistory()">PURGE DATA</button>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIMESTAMP</th>
+                            <th>INPUT DATA</th>
+                            <th>ENGINEERING RESULT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
